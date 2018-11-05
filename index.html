@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Wireless Insecurity</title>
+        <title>WiFi Insecurity</title>
 
-        <meta name="description" content="Wireless Insecurity">
+        <meta name="description" content="WiFi Insecurity">
         <meta name="author" content="Nabil Alsharif">
 
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,8 +41,8 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             <!-- Presentation Overview -->
             <div class="slides">
                 <section>
-                    <h1>Wireless Insecurity</h1>
-                    <h2>A tour of common attacks on WiFi networks</h2>
+                    <h1>WiFi Insecurity</h1>
+                    <p>A tour of common attacks on WiFi networks</p>
                 </section>
 
                 <section>
@@ -50,6 +50,51 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                     <p>Information Security Consultant @ <em>Blit-Tech</em></p>
                     <p>Software Developer @ <em>Shelter Insurance</em></p>
                     <p><em>Email:</em> <a href="mailto:blit32@gmail.com">nabil@blit.tech</a></p>
+                </section>
+
+                <section>
+                    <h2>No Physical Access Control</h2>
+                    <p>Maybe the only issue that is <em>fundamental</em> to wireless security</p>
+                    <p>Most attacks use this to their advantage</p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Cannot control who access the device</li>
+                            <li>Sniffing becomes very easy</li>
+                            <li>Injection becomes very easy</li>
+                            <li>All other attacks could happen on a wired network too</li>
+                        </ul>
+                    </aside>
+                </section>
+
+
+                <section>
+                    <section>
+                        <!-- http://www.cs.sjsu.edu/~stamp/CS265/projects/Spr05/papers/WEP.pdf -->
+                        <h2>WEP</h2>
+                        <p>Don't use this!!</p>
+                    </section>
+
+                    <section>
+                        <img src="img/wifi-wep-encryption.png">
+                        <p>
+                            <small>src: http://www.cs.sjsu.edu/~stamp/CS265/projects/Spr05/papers/WEP.pdf</small>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>The Core Problem is IV is used incorrectly</h3>
+                        <p>Key Reuse with RC4</p>
+                        <aside class="notes">
+                            <p>Key is 64-bits, 24-bit IV + 40-bit Secret Key</p>
+                            <p>Secret Key is fixed</p>
+                            <p>IV space can be used up in a matter of hours, active attackers can speed this up</p>
+                            <p>This leads to a detectable key-reuse scenario with RC4</p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>WPA</h2>
                 </section>
 
             </div>
