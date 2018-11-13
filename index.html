@@ -87,6 +87,11 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                         <p>
                             <small>src: http://www.cs.sjsu.edu/~stamp/CS265/projects/Spr05/papers/WEP.pdf</small>
                         </p>
+                        <aside class="notes">
+                            <p>Key is 64-bits, 24-bit IV + 40-bit Secret Key</p>
+                            <p>Secret Key is fixed</p>
+                            <p>This leads to a detectable key-reuse scenario with RC4</p>
+                        </aside>
                     </section>
 
                     <section>
@@ -95,7 +100,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                         <aside class="notes">
                             <p>Key is 64-bits, 24-bit IV + 40-bit Secret Key</p>
                             <p>Secret Key is fixed</p>
-                            <p>IV space can be used up in a matter of hours, active attackers can speed this up</p>
                             <p>This leads to a detectable key-reuse scenario with RC4</p>
                         </aside>
                     </section>
@@ -115,7 +119,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                         <ul>
                             <li><em>WPA-Personal</em>: Static pre-shared key (aka. password). Most common in homes and coffee shops.</li>
                             <li><em>WPA-Enterprise</em>: Requires and authentication server, has lots of modes.</li>
-                            <li><em>WPS:</em>Wi-Fi Protected Setup. Uses and 8-digit PIN. Broken, disable if you can.</li>
+                            <li><em>WPS:</em> Wi-Fi Protected Setup. Uses and 8-digit PIN. Broken, disable if you can.</li>
                         </ul>
                         <aside class="notes">
                             <p>These are all methods of establishing a pre-shared key (Pairwise Master Key) for connecting to the AP</p>
@@ -146,6 +150,43 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             <p>The AP constructing the <code>PTK</code> confirms to the station that the AP knows the <code>PMK</code></p>
                         </aside>
                     </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>WPA 3</h2>
+                        <p>The Future!</p>
+                        <p><small>Thank you <a href="https://www.mathyvanhoef.com/2018/03/wpa3-technical-details.html">Mathy Vanhoef</a></small></p>
+                    </section>
+
+                    <section>
+                        <h3>More Secure Handshake</h3>
+                        <p>Eliminates offline dictionary attacks and provides forward secrecy using SAE</p>
+                        <aside class="notes">
+                            <p>SAE, Simultaneous Authentication of Equals, generates a new key that is then used in the traditional WPA handshake</p>
+                            <p>The password has to be available (aka stored) to the router in plaintext</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Replace WPS</h3>
+                        <p>A little complicated, but is based on the devices wanting to connect providing a public key to the router</p>
+                        <aside class="notes">
+                            <p>QR-Code, Bluetooth, NFC etc used to communicate a public key to the router</p>
+                            <p>The PK used to create a temporary connection over which new creds are exchanged</p>
+                            <p>Creds are used to create a connector that is used for DH exchange</p>
+                            <p>The result of  the DH exchange is the PMK used in a traditional WPA handshake</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Unauthenticated Encryption</h3>
+                        <p>Not sure how this will work, but Opportunistic Wireless Encryption (OWE) is a strong candidate</p>
+                        <aside class="notes">
+                            <p>DH exchange used to derive a PMK for a WPA handshake<p>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <section>
